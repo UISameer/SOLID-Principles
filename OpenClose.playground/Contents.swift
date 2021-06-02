@@ -52,7 +52,7 @@ class RectangleSolid: ShapeArea {
     let height: CGFloat = 0.0
 
     func area() -> CGFloat {
-        return self.height * self.width
+        return height * width
     }
 }
 
@@ -60,12 +60,24 @@ class CircleSolid: ShapeArea {
     let radius: CGFloat = 0.0
 
     func area() -> CGFloat {
-        return .pi * self.radius * self.radius
+        return .pi * radius * radius
     }
 }
 
 class AreaCalculatorSolid {
     func area(shape: ShapeArea) -> CGFloat {
         return shape.area()
+    }
+}
+
+/*
+ so if there is requirement tomorrow to calculate the area of even Triangle, we should be able to achieve it without modifying the existing AreaCalculator class just by extending the Shape Protocol for Triangle, This obeys the SOLID Open Close Principle.
+ */
+class Triangle: ShapeArea {
+    let length: CGFloat = 0.0
+    let breath: CGFloat = 0.0
+
+    func area() -> CGFloat {
+        return 1/2 * length * breath
     }
 }
